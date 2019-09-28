@@ -16,10 +16,13 @@
 - LMB comes before RMB - makes more sense to me that way
 - Remove redundant symbols that can already be easily accessed through SHIFT, e.g. ?, <, >
 - Add PrintScreen, Insert
+- Reorganize symbols so they more closely map to a regular qwerty, e.g. _ above -, + above =, etc.
 - Free up space for future layers
 
 
 Todos:
+- Put media in its own layer, to make space for Home, end, ...
+- Home, end, Page up/Page down
 - Separate layer for greek letters?
 - French accents on separate layer
 */
@@ -53,8 +56,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        ,-------.                      ,-------.
  *                                        | MMB   |                      | PgDn  |
  *                                 ,------|-------|                      |-------|------.
- *                                 | LALT | NUMB  |                      |       | SYMB |
- *                                 |      | Escape|                      |       | ENT  |
+ *                                 | LALT | SYMB  |                      |       | SYMB |
+ *                                 |      | ENT   |                      |       | ENT  |
  *                                 |      |       |                      |       |      |
  *                                 `--------------'                      `--------------'
  */
@@ -62,18 +65,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LT(NUMB, KC_ESC),       KC_Q,  KC_W,   KC_E,   KC_R, KC_T,                                KC_Y,    KC_U, KC_I, KC_O,   KC_P,    KC_TRNS,
     KC_TAB,  KC_A,  KC_S,   KC_D,   KC_F, KC_G, KC_BTN1,                        	 KC_DEL,  KC_H,    KC_J, KC_K, KC_L,   KC_SCLN, KC_TRNS,
     KC_LGUI,                KC_Z,  KC_X,   KC_C,   KC_V, KC_B, KC_BTN2, KC_BTN3,     KC_PGDN, KC_BSPC,  KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_TRNS,
-							KC_LSHIFT,   KC_LCTRL, KC_LALT, LT(NUMB, KC_ESC),        KC_TRNS, LT(SYMB, KC_ENT),  LT(NUMB, KC_SPC),   KC_BSPC
+							KC_LSHIFT,   KC_LCTRL, KC_LALT, LT(SYMB, KC_ENT),        KC_TRNS, LT(SYMB, KC_ENT),  LT(NUMB, KC_SPC),   KC_BSPC
     ),
 
 	
 /* Keymap 1: Symbols layer
  *
  * ,-------------------------------------------.                         ,-------------------------------------------.
- * |        |  !   |  @   |  {   |  }   |  |   |                         |      |      |      |PrtScr| Ins  |  \ |   |
+ * |        |  !   |  @   |  {   |  }   |  |   |                         |   +  |  _   |  "   |PrtScr| Ins  |        |
  * |--------+------+------+------+------+------|------.           .------|------+------+------+------+------+--------|
- * |        |  #   |  $   |  (   |  )   |  `   |      |           |      |   +  |  - _ | ' "  |  *   |      |        |
+ * |        |  #   |  $   |  (   |  )   |  `   |      |           |      |   =  |  - _ | ' "  |  *   | \ |  |        |
  * |--------+------+------+------+------+------|------|           |------|------+------+------+------+------+--------|
- * |Windows |  %   |  ^   |  [   |  ]   |  ~   |      |           |      |   &  |  =   |      |      |      |        |
+ * |Windows |  %   |  ^   |  [   |  ]   |  ~   |      |           |      |   &  |      |      |      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *                        .------.   .------.                                 .------.   .-----.
  *                        |LShift|   | Ctrl |                                 |      |   |     |
@@ -81,15 +84,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        ,-------.                     ,-------.
  *                                        |       |                     | PgUp  |
  *                                 ,------|-------|                     |-------|------.
- *                                 | LALT |       |                     |       |      |
- *                                 |      |       |                     |       |      |
+ *                                 | LALT |       |                     |       | SYMB |
+ *                                 |      |       |                     |       |(push)|
  *                                 |      |       |                     |       |      |
  *                                 `--------------'                     `--------------'
  */
 [SYMB] = LAYOUT_gergo(
-    KC_TRNS, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE,                                            KC_TRNS, KC_TRNS, KC_TRNS, KC_PSCR, KC_INS,  KC_BSLS,
-    KC_TRNS, KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,  KC_TRNS,                          KC_TRNS, KC_PLUS, KC_MINS, KC_QUOT, KC_ASTR, KC_TRNS, KC_TRNS,
-    KC_LGUI, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_AMPR, KC_EQL,  KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE,                                            KC_PLUS, KC_UNDS, KC_DQUO, KC_PSCR, KC_INS,  KC_TRNS,
+    KC_TRNS, KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,  KC_TRNS,                          KC_TRNS, KC_EQL,  KC_MINS, KC_QUOT, KC_ASTR, KC_BSLS, KC_TRNS,
+    KC_LGUI, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_AMPR, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                                         KC_LSHIFT, KC_LCTRL, KC_LALT, KC_TRNS,     KC_TRNS, KC_TRNS, KC_PGUP, KC_TRNS
     ),
 /* Keymap 2: Pad/Function layer
