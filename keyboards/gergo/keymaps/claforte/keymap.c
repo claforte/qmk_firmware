@@ -9,10 +9,10 @@
  */
  
 /* Todos:
-replace tab and spa
+DONE: exchange tab and numb/space in right side, bottom.
 enter -> move in column, no longer tie with alt (to support alt-enter)
 ctrl/esc
-make sure ctrl+shift works well with arrows
+make sure ctrl+shift works well with arrows */
 
 #include QMK_KEYBOARD_H
 
@@ -37,14 +37,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|------|           |------|------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  | LMB  |           |      |   N  |   M  | ,  < | . >  | /  ? |  - _   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *                    .----------.   .-------.                                 .------.   .-----.
- *                    | Super/Del|   |Ent/ALT|                                 | Tab  |   |BKSP |
- *                    '----------'   '-------'                                 `------.   '-----'
+ *                    .----------.   .-------.                                 .----------.   .-----.
+ *                    | Super/Del|   |Ent/ALT|                                 |NUMB/Space|   |BKSP |
+ *                    '----------'   '-------'                                 `----------.   '-----'
  *                                        ,-------.                      ,-------.
  *                                        | MMB   |                      | PgDn  |
  *                                 ,------|-------|                      |-------|------.
- *                                 | SYMB | NUMB  |                      | SYMB  | NUMB |
- *                                 | Space| Escape|                      | Mod   |Space |
+ *                                 | SYMB | NUMB  |                      | SYMB  | TAB  |
+ *                                 | Space| Escape|                      | Mod   |      |
  *                                 |      |       |                      |       |      |
  *                                 `--------------'                      `--------------'
  */
@@ -52,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LT(NUMB, KC_ESC),       KC_Q,  KC_W,   KC_E,   KC_R, KC_T,                                          KC_Y,    KC_U, KC_I, KC_O,   KC_P,    KC_PIPE,
     MT(MOD_LCTL, KC_BSPC),  KC_A,  KC_S,   KC_D,   KC_F, KC_G, KC_BTN2,                       KC_TRNS,  KC_H,    KC_J, KC_K, KC_L,   KC_SCLN, KC_QUOT,
     KC_RSFT,                KC_Z,  KC_X,   KC_C,   KC_V, KC_B, KC_BTN1, KC_BTN3,     KC_PGDN, KC_BSPC,  KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_MINS,
-  MT(MOD_LGUI, KC_DEL), MT(MOD_LALT, KC_ENT), LT(SYMB, KC_SPC), LT(NUMB, KC_ESC),    LT(SYMB, KC_ENT), LT(NUMB, KC_SPC), KC_TAB, KC_BSPC
+    MT(MOD_LGUI, KC_DEL),   MT(MOD_LALT, KC_ENT), LT(SYMB, KC_SPC), LT(NUMB, KC_ESC),    LT(SYMB, KC_ENT),  KC_TAB,  LT(NUMB, KC_SPC),   KC_BSPC
     ),
 /* Keymap 1: Symbols layer
  *
