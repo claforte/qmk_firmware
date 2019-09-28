@@ -14,6 +14,8 @@
 - no longer tie Enter with alt (to support alt-enter)
 - move TAB on left side - can hit windows-tab with pinky
 - LMB comes before RMB - makes more sense to me that way
+- Separate layer for greek letters?
+- French accents on separate layer
 
 Todos:
 - missing INS (shift-insert, ctrl-insert)
@@ -49,23 +51,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        ,-------.                      ,-------.
  *                                        | MMB   |                      | PgDn  |
  *                                 ,------|-------|                      |-------|------.
- *                                 | ALT  | NUMB  |                      | SYMB  | ENT  |
- *                                 |      | Escape|                      | Ent   |      |
+ *                                 | ALT  | NUMB  |                      |       | SYMB |
+ *                                 |      | Escape|                      |       | ENT  |
  *                                 |      |       |                      |       |      |
  *                                 `--------------'                      `--------------'
  */
 [BASE] = LAYOUT_gergo(
-    LT(NUMB, KC_ESC),       KC_Q,  KC_W,   KC_E,   KC_R, KC_T,                                          KC_Y,    KC_U, KC_I, KC_O,   KC_P,    KC_PIPE,
-    KC_TAB,  KC_A,  KC_S,   KC_D,   KC_F, KC_G, KC_BTN1,                       KC_DEL,  KC_H,    KC_J, KC_K, KC_L,   KC_SCLN, KC_QUOT,
+    LT(NUMB, KC_ESC),       KC_Q,  KC_W,   KC_E,   KC_R, KC_T,                                KC_Y,    KC_U, KC_I, KC_O,   KC_P,    KC_PIPE,
+    KC_TAB,  KC_A,  KC_S,   KC_D,   KC_F, KC_G, KC_BTN1,                        	 KC_DEL,  KC_H,    KC_J, KC_K, KC_L,   KC_SCLN, KC_QUOT,
     KC_LGUI,                KC_Z,  KC_X,   KC_C,   KC_V, KC_B, KC_BTN2, KC_BTN3,     KC_PGDN, KC_BSPC,  KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_MINS,
-    KC_LSHIFT,   KC_LCTRL, KC_LALT, LT(NUMB, KC_ESC),    LT(SYMB, KC_ENT),  KC_ENT,  LT(NUMB, KC_SPC),   KC_BSPC
+    KC_LSHIFT,   KC_LCTRL, KC_LALT, LT(NUMB, KC_ESC),    					         KC_TRNS, LT(SYMB, KC_ENT),  LT(NUMB, KC_SPC),   KC_BSPC
     ),
 
 	
 /* Keymap 1: Symbols layer
  *
  * ,-------------------------------------------.                         ,-------------------------------------------.
- * |        |  !   |  @   |  {   |  }   |  |   |                         |      |      |      |      |      |  \ |   |
+ * |        |  !   |  @   |  {   |  }   |  |   |                         |      |      |      |PrtScr| Ins  |  \ |   |
  * |--------+------+------+------+------+------|------.           .------|------+------+------+------+------+--------|
  * |        |  #   |  $   |  (   |  )   |  `   |      |           |      |   +  |  -   |  /   |  *   |  %   |  ' "   |
  * |--------+------+------+------+------+------|------|           |------|------+------+------+------+------+--------|
@@ -83,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------'                     `--------------'
  */
 [SYMB] = LAYOUT_gergo(
-    KC_TRNS, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE,                                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_BSLS,
+    KC_TRNS, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE,                                            KC_TRNS, KC_TRNS, KC_TRNS, KC_PSCR, KC_INS,  KC_BSLS,
     KC_TRNS, KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,  KC_TRNS,                          KC_TRNS, KC_PLUS, KC_MINS, KC_SLSH, KC_ASTR, KC_PERC, KC_QUOT,
     KC_TRNS, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_AMPR, KC_EQL,  KC_COMM, KC_DOT,  KC_SLSH, KC_MINS,
                                         KC_TRNS, KC_TRNS, KC_SCLN, KC_EQL,         KC_EQL,  KC_SCLN, KC_PGUP, KC_DEL
