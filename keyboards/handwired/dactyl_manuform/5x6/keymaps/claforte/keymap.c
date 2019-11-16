@@ -1,5 +1,5 @@
 #include QMK_KEYBOARD_H
-#include "333fred.h"
+#include "claforte.h"
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -10,9 +10,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_ESC,        KC_A,        KC_S,  KC_D,  KC_F,    KC_G,                                          KC_H,   KC_J,     KC_K,         KC_L,   KC_SCLN, KC_QUOT,
      OSM(MOD_LSFT), CTL_T(KC_Z), KC_X,  KC_C,  KC_V,    KC_B,                                          KC_N,   KC_M,     KC_COMM,      KC_DOT, KC_SLSH, OSM(MOD_RSFT),
                                  KC_F4, KC_F5,                                                                           TG(CODEFLOW), KC_EQL,
-                                               KC_LALT, KC_BSPC,                                       KC_SPC, OSL(VIM),
-                                                        TD(TD_COPY_PASTE), TD(TD_SYM_VIM),     KC_ENT, KC_RGUI,
-                                                        KC_LCTL,           KC_DEL,             KC_UP,  KC_DOWN
+                                               KC_ENT, KC_SPC,                                       KC_BSPC, OSL(VIM),
+                                                        KC_LALT, KC_DEL,                    KC_RGUI, KC_RALT,
+                                                        KC_LCTL, _______,                   _______, TD(TD_COPY_PASTE)
   ),
 
   [CODEFLOW] = LAYOUT_5x6(

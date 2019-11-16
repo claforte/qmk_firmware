@@ -1,6 +1,6 @@
 #pragma once
 
-#include "333fred_config.h"
+#include "claforte_config.h"
 
 #define USE_SERIAL
 #define EE_HANDS
